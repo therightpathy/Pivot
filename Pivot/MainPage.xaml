@@ -11,7 +11,7 @@
         <local:ViewModel></local:ViewModel>
     </Page.DataContext>
     <Grid>
-        <Pivot x:Name="rootPivot" Title="Changed the title">
+        <Pivot x:Name="rootPivot" Title="PivotDimseLab">
             <PivotItem Header="Projekterne">
                 <!--Pivot content goes here-->
                 <ListView ItemsSource="{Binding ListA}">
