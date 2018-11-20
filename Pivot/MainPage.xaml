@@ -14,21 +14,30 @@
         <Pivot x:Name="rootPivot" Title="PivotDimseLab">
             <PivotItem Header="Projekterne">
                 <!--Pivot content goes here-->
-                <ListView ItemsSource="{Binding ListA}">
+                <ListView ItemsSource="{Binding ListA}" SelectedItem="{Binding SelectedProject, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text = "{Binding Name}" Margin="10"></TextBlock>
-                                <TextBlock Text = "{Binding Description}" Margin="10"></TextBlock>
+                            <StackPanel Orientation="Horizontal" Height="100">
+                                <TextBlock Text = "{Binding Name, Mode=TwoWay}" Margin="10"></TextBlock>
+                                <TextBlock Text = "{Binding Description, Mode=TwoWay}" Margin="10"></TextBlock>
+                                <ListView ItemsSource="{Binding ParticipantList, Mode=TwoWay}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Name, Mode=TwoWay}"/>
+                                                <TextBlock Text="{Binding Email, Mode=TwoWay}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    <TextBlock Text="Content of section 1"/>
                 </ListView>
             </PivotItem>
             <PivotItem Header="Deltagere">
-                <!--Pivot content goes here-->
-                <ListView ItemsSource="{Binding ListB}">
+                <ListView ItemsSource="{Binding ListA}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -39,11 +48,9 @@
                         </DataTemplate>
 
                     </ListView.ItemTemplate>
-                    <TextBlock Text="Content of section 2."/>
                 </ListView>
             </PivotItem>
             <PivotItem Header="Dimser">
-                <!--Pivot content goes here-->
                 <ListView ItemsSource="{Binding ListC}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -53,13 +60,8 @@
                                 <TextBlock Text = "{Binding Delivered}" Margin="10"></TextBlock>
                                 <TextBlock Text = "{Binding Keyword}" Margin="10"></TextBlock>
                             </StackPanel>
-
                         </DataTemplate>
-
                     </ListView.ItemTemplate>
-                    <TextBlock Text="Content of section 2."/>
-
-                    <TextBlock Text="Content of section 3."/>
                 </ListView>
             </PivotItem>
         </Pivot>

@@ -12,26 +12,26 @@ namespace Pivot
         //Creating methods 
         public string name;
         public string description;
-        private ObservableCollection<Participant> participantList = new ObservableCollection<Participant>();
+        private List<Participant> _participantList = new List<Participant>();
 
         public Project()
         {
         }
 
         //Creating default constructor to inherit from Participant class
-        public Project(string name, string email)
+        public Project(string name, string description, List<Participant> participants)
         {
-            participantList.Add(new Participant() { Name = "Adam Adamsen", Email = "adam@edu.easj.dk" });
-            participantList.Add(new Participant() { Name = "Berit Beritsen", Email = "berit@edu.easj.dk" });
-            participantList.Add(new Participant() { Name = "Casandra Casandrasen", Email = "casandra@edu.easj.dk" });
-            //Adding OrderBy
-            participantList = new ObservableCollection<Participant>(participantList.OrderBy(participant => participant.Name).ToList());
+            this.name = name;
+            this.description = description;
+            _participantList = participants;
+            
+            _participantList = new List<Participant>(_participantList.OrderBy(participant => participant.Name).ToList());
         }
 
-        public ObservableCollection<Participant> ParticipantList
+        public List<Participant> ParticipantList
         {
-            get { return participantList; }
-            set { participantList = value; }
+            get { return _participantList; }
+            set { _participantList = value; }
         }       
 
         //Adding get&set to methods
