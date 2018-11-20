@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="Pivot.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Pivot"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:ViewModel></local:ViewModel>
+    </Page.DataContext>
+    <Grid>
+        <Pivot x:Name="rootPivot" Title="DimseLab">
+            <PivotItem Header="Projekterne">
+                <!--Pivot content goes here-->
+                <ListView ItemsSource="{Binding ListA}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text = "{Binding Name}"></TextBlock>
+                                <TextBlock Text = " | "></TextBlock>
+                                <TextBlock Text = "{Binding Description}"></TextBlock>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <TextBlock Text="Content of section 1"/>
+                </ListView>
+            </PivotItem>
+            <PivotItem Header="Deltagere">
+                <!--Pivot content goes here-->
+                <ListView ItemsSource="{Binding ListB}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text = "{Binding Name}"></TextBlock>
+                                <TextBlock Text = " | "></TextBlock>
+                                <TextBlock Text = "{Binding Email}"></TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                    <TextBlock Text="Content of section 2."/>
+                </ListView>
+            </PivotItem>
+            <PivotItem Header="Dimser">
+                <!--Pivot content goes here-->
+                <ListView ItemsSource="{Binding ListC}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text = "{Binding Name}"></TextBlock>
+                                <TextBlock Text = " | "></TextBlock>
+                                <TextBlock Text = "{Binding Returned}"></TextBlock>
+                                <TextBlock Text = " | "></TextBlock>
+                                <TextBlock Text = "{Binding Delivered}"></TextBlock>
+                                <TextBlock Text = " | "></TextBlock>
+                                <TextBlock Text = "{Binding Keyword}"></TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                    <TextBlock Text="Content of section 2."/>
+
+                    <TextBlock Text="Content of section 3."/>
+                </ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
